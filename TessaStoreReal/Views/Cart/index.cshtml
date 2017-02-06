@@ -1,0 +1,41 @@
+﻿@model TessaStoreReal.Models.CartModel
+@{
+    ViewBag.Title = "index";
+}
+<body class="shop">
+    <div class="well">
+        <h2>Cart</h2>
+@if (Model.Products != null)
+{
+    <div class="row product-header">
+        <div class="col-md-3">
+            <strong>Product</strong>
+        </div>
+        <div class="col-md-3">
+            <strong>Quantity</strong>
+        </div>
+        <div class="col-md-3">
+            <strong>Total</strong>
+        </div>
+    </div>
+    foreach (var p in Model.Products)
+    {
+        <div class="row">
+          <div class="col-md-3">@p.ProductName</div>
+          <div class="col-md-3">@p.Quantity</div>
+          <div class="col-md-3">@((p.Price.Value*p.Quantity).ToString("c"))</div>
+        </div>
+        <hr/>
+    }
+}
+else
+{<h3>Your cart is empty.</h3>}
+    
+@using (Html.BeginForm())
+{
+    <input type="submit" class="btn btn-primary" value="Checkout" />
+}
+        </div>
+    </body>
+
+

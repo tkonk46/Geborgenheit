@@ -1,0 +1,28 @@
+﻿@model TessaStoreReal.Models.ResetPasswordModel
+@{
+    ViewBag.Title = "Reset";
+}
+<body class="password">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4 well membership text-center">
+            <h2>Enter your new password</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="flex-container">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Password)
+                        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Password)
+
+                        @Html.HiddenFor(x => x.ResetToken)
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Change Password" class="btn btn-primary button-width" />
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    </body>
+

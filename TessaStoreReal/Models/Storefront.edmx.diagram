@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df137ba5dcf84712a715a9a717aaf114" Name="Diagram1">
+        <EntityTypeShape EntityType="StorefrontModel.Product" Width="1.5" PointX="5.375" PointY="1" />
+        <EntityTypeShape EntityType="StorefrontModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StorefrontModel.Order" Width="1.5" PointX="7.625" PointY="4.25" />
+        <AssociationConnector Association="StorefrontModel.FK__Orders__OrderNum__4D94879B" />
+        <EntityTypeShape EntityType="StorefrontModel.webpages_Membership" Width="1.5" PointX="3.75" PointY="4.75" />
+        <EntityTypeShape EntityType="StorefrontModel.webpages_OAuthMembership" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="StorefrontModel.webpages_Roles" Width="1.5" PointX="1.125" PointY="5.625" />
+        <AssociationConnector Association="StorefrontModel.FK_Orders_Customers" />
+        <AssociationConnector Association="StorefrontModel.webpages_UsersInRoles" />
+        <EntityTypeShape EntityType="StorefrontModel.OrderProduct" Width="1.5" PointX="9.875" PointY="3.625" />
+        <AssociationConnector Association="StorefrontModel.FK__OrderProd__Order__18EBB532" />
+        <AssociationConnector Association="StorefrontModel.FK__OrderProd__Produ__619B8048" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

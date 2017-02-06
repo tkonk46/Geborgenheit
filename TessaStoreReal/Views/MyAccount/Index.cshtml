@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<body class="password">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 well membership text-center">
+            <h2>My Account</h2>
+            @*@Html.DisplayFor(x=>x.EmailAddress)*@
+            @Html.ActionLink("Change Password", "Reset", "ForgotPassword")
+            </div>
+        </div>
+    </body>
+

@@ -1,0 +1,34 @@
+﻿<nav class="pull-right">
+    <ul class="nav navbar-nav">
+        @if (WebMatrix.WebData.WebSecurity.IsAuthenticated)
+        {
+            <li>
+                @Html.ActionLink("Logout as "+@User.Identity.Name, "Index", "Logout")
+            </li>
+            <li>
+                @Html.ActionLink("My Account", "Index", "MyAccount")
+            </li>
+             <li>
+                @*<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">*@
+                    @Html.ActionLink("Cart", "Index", "Cart")
+                    @*</span>*@
+            </li>
+           
+        }
+        else
+        {
+            <li>
+                @Html.ActionLink("Sign In", "Index", "Login")
+            </li>
+            <li>
+                @Html.ActionLink("Register", "Index", "Registration")
+            </li>
+            <li> 
+                @*<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                </span>*@
+                @Html.ActionLink("Cart", "Index", "Cart")
+            </li>
+
+        }
+    </ul>
+</nav>

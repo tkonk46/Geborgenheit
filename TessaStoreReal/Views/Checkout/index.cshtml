@@ -1,0 +1,110 @@
+﻿@using TessaStoreReal.Models
+@model CheckoutModel
+@{
+    ViewBag.Title = "Checkout";
+    List<SelectListItem> months = new List<SelectListItem>();
+    for (int i = 1; i <= 12; i++)
+    {
+        months.Add(new SelectListItem { Text = i.ToString().PadLeft(2, '0'), Value = i.ToString() });
+    }
+    List<SelectListItem> years = new List<SelectListItem>();
+    for (DateTime d = DateTime.Now; d < DateTime.Now.AddYears(5); d = d.AddYears(1))
+    {
+        years.Add(new SelectListItem { Text = d.Year.ToString(), Value = d.Year.ToString() });
+    }
+
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<h2>Checkout</h2>
+    if(!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary(false);
+        </div>
+    }
+  <div class="col-md-3 checkout">
+    <h2>Contact Info</h2>
+@Html.LabelFor(m=>m.FirstName)
+@Html.TextBoxFor(m=>m.FirstName, new {@class="form-control"})
+@Html.ValidationMessageFor(m=>m.FirstName)
+@Html.LabelFor(m => m.LastName)
+@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+@Html.ValidationMessageFor(m=>m.LastName)
+@Html.LabelFor(m => m.EmailAddress)
+@Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+@Html.ValidationMessageFor(m=>m.EmailAddress)
+@Html.LabelFor(m => m.PhoneNumber)
+@Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+@Html.ValidationMessageFor(m=>m.PhoneNumber)
+ </div>
+ <div class="col-md-3 col-md-offset-1 checkout">
+<h2>Billing Info</h2>
+@Html.LabelFor(m => m.CreditCardNumber)
+@Html.TextBoxFor(m => m.CreditCardNumber, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.CreditCardNumber)
+@Html.LabelFor(m => m.CreditCardVerificationValue)
+@Html.TextBoxFor(m => m.CreditCardVerificationValue, new { @class = "form-control" })
+@Html.ValidationMessageFor(m=>m.CreditCardVerificationValue)   
+@Html.LabelFor(m=> m.CreditCardName)
+@Html.TextBoxFor(m=> m.CreditCardName, new { @class = "form-control" })
+@Html.ValidationMessageFor(m=>m.CreditCardName)
+ <div class="form-group">
+     @Html.LabelFor(m=>m.CreditCardExpirationMonth)
+     <div class="form-inline">
+    @Html.DropDownListFor(m => m.CreditCardExpirationMonth, months, new { @class = "form-control" })
+    /
+    @Html.DropDownListFor(m => m.CreditCardExpirationYear, years, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m=>m.CreditCardExpirationMonth)
+    @Html.ValidationMessageFor(m=>m.CreditCardExpirationYear)
+    </div>
+</div>
+</div>
+<div class="col-md-3 col-md-offset-1 checkout">
+<h2>Shipping Info</h2>
+    @Html.LabelFor(m => m.ShippingRecipient)
+    @Html.TextBoxFor(m => m.ShippingRecipient, new { @class = "form-control" })
+
+    @Html.ValidationMessageFor(m=>m.ShippingRecipient)
+   
+    @Html.LabelFor(m => m.ShippingStreet1)
+    @Html.TextBoxFor(m => m.ShippingStreet1, new { @class = "form-control" })
+
+    @Html.ValidationMessageFor(m => m.ShippingStreet1)
+    
+    @Html.LabelFor(m => m.ShippingStreet2)
+    @Html.TextBoxFor(m => m.ShippingStreet2, new { @class = "form-control" })
+
+    @Html.ValidationMessageFor(m => m.ShippingStreet2)
+   
+    @Html.LabelFor(m => m.ShippingCity)
+    @Html.TextBoxFor(m => m.ShippingCity, new { @class = "form-control" })
+
+    @Html.ValidationMessageFor(m => m.ShippingCity)
+
+    @Html.LabelFor(m=>m.ShippingState)
+    @Html.TextBoxFor(m=>m.ShippingState, new { @class = "form-control" })
+
+    @Html.ValidationMessageFor(m=>m.ShippingState)
+    
+    @Html.LabelFor(m => m.ShippingZip)
+    @Html.TextBoxFor(m => m.ShippingZip, new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(m => m.ShippingZip)
+    </div>
+ 
+<input type="submit" value="Submit Order" class="btn btn-primary"/>
+}
+
+     @section scripts{
+         <script>
+             $(document).ready(function () {
+                 $('.input-validation-error').parents('.checkout').addClass('has-error');
+                 $('.field-validation-error').addClass('text-danger');
+             })
+         </script>
+         
+         }

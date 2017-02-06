@@ -1,0 +1,32 @@
+﻿@model TessaStoreReal.Models.LoginModel
+@{
+    ViewBag.Title = "Index";
+}
+<body class="password">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4 well membership text-center">
+            <h2>Login</h2>
+            @using (Html.BeginForm())
+            {
+                 @Html.ValidationSummary()
+                <div class="flex-container">
+                 <div class="form-group">
+                     @Html.LabelFor(x => x.EmailAddress)
+                     @Html.TextBoxFor(x => x.EmailAddress, new { @class = "form-control" })
+                     @Html.ValidationMessageFor(x=>x.EmailAddress)
+                 </div>
+                 <div class="form-group">
+                     @Html.LabelFor(x => x.Password)
+                     @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                     @Html.ValidationMessageFor(x=> x.Password)
+                 </div>
+                 <div class="form-group">
+                       <input type="submit" value="Login" class="btn btn-primary button-width" />
+                        @Html.ActionLink("Register a new account", "Index", "Registration", null, new { @class = " btn button-width" })
+                        @Html.ActionLink("Forgot password?", "Index", "ForgotPassword", null, new { @class = "btn button-width" })
+                 </div>
+              </div>
+              }
+         </div>
+       </div>
+    </body>
